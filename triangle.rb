@@ -14,9 +14,27 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  raise TriangleError, "Sides must be > 0" if a <= 0 || b <= 0 || c <= 0 
+
+  if a + b <= c || a + c <= b || b + c <= a
+    raise TriangleError, "Two sides cannot equal or exceed the third side"
+  end
+
+
+case 
+when a==b && b==c 
+  :equilateral
+
+when a==b || b==c || a==c
+  :isosoceles
+
+  else 
+    :scalene
+
+end
+
 end
 
 # Error class used in part 2.  No need to change this code.
-class TriangleError < StandardError
+class  TriangleError < StandardError
 end
